@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  backend:
+    # If you push to Docker Hub/ECR, use the pushed image:
+    # image: your-dockerhub-username/mivora-backend:latest
+    # If you build ON the EC2 box, use this instead:
+    build: .
+    container_name: mivora-backend
+    restart: unless-stopped
+
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: "postgres://postgres:nguyenyeuthaovy@mivora-db.c5cy64cy67it.ap-southeast-1.rds.amazonaws.com:5432/Mivora"
+
+    ports:
+      - "4000:4000"
+
+    # Persist uploads across container restarts (optional but sensible)
+    volumes:
+      - uploads:/app/uploads
+
+volumes:
+  uploads:

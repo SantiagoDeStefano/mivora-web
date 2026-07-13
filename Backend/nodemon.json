@@ -1,0 +1,6 @@
+{
+  "watch": ["src", ".env", "MivoraSwagger.yaml"],
+  "ext": "ts,js,yaml,yml,env",
+  "ignore": [],
+  "exec": "tsx ./src/index.ts"
+}
