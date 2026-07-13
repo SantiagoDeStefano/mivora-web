@@ -1,19 +1,19 @@
 # Mivora - Event Ticket Management Platform
 
-A full-stack event management and ticketing platform built with **TypeScript**, **Node.js**, **Express**, **React**, and **PostgreSQL**. Features real-time chat, QR code scanning, and comprehensive event organization tools.
+A full-stack event management and ticketing platform built with TypeScript, Node.js, Express, React, and PostgreSQL. Features real-time chat, QR code scanning, and comprehensive event organization tools.
 
 ![Mivora High-Level Architecture](images/mivora-high-level-architecture.jpg)
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
-- [Installation & Setup](#installation--setup)
+- [Installation and Setup](#installation-and-setup)
 - [Configuration](#configuration)
 - [Running the Application](#running-the-application)
 - [API Documentation](#api-documentation)
@@ -23,55 +23,55 @@ A full-stack event management and ticketing platform built with **TypeScript**, 
 
 ---
 
-## 🎯 Overview
+## Overview
 
-**Mivora** is a comprehensive event management platform that enables:
+Mivora is a comprehensive event management platform that enables:
 
-- **Event Organizers** to create, manage, and publish events with detailed information
-- **Attendees** to discover events, purchase tickets, and check in with QR codes
-- **Real-time Communication** between event organizers and attendees via chat
-- **Ticket Management** with automated email verification and QR code generation
+- Event organizers to create, manage, and publish events with detailed information
+- Attendees to discover events, purchase tickets, and check in with QR codes
+- Real-time communication between event organizers and attendees via chat
+- Ticket management with automated email verification and QR code generation
 
 Deployed in production at [mivora.vercel.app](https://mivora.vercel.app)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Backend
 
-- **Runtime**: Node.js 22 (Alpine)
-- **Framework**: Express.js 5.1
-- **Language**: TypeScript 5.9
-- **Database**: PostgreSQL
-- **Real-time**: Socket.io 4.8
-- **File Storage**: AWS S3
-- **Email Service**: AWS SES
-- **Authentication**: JWT (with multiple token types)
-- **Documentation**: Swagger UI
+- Runtime: Node.js 22 (Alpine)
+- Framework: Express.js 5.1
+- Language: TypeScript 5.9
+- Database: PostgreSQL
+- Real-time: Socket.io 4.8
+- File Storage: AWS S3
+- Email Service: AWS SES
+- Authentication: JWT (with multiple token types)
+- Documentation: Swagger UI
 
 ### Frontend
 
-- **Framework**: React 19 + Vite 7
-- **Language**: TypeScript 5.9
-- **Styling**: Tailwind CSS 4.1
-- **HTTP Client**: Axios
-- **State Management**: React Context API
-- **Data Fetching**: TanStack React Query
-- **Forms**: React Hook Form + Yup validation
-- **QR Code**: html5-qrcode, QR Scanner
-- **Icons**: Lucide React
+- Framework: React 19 with Vite 7
+- Language: TypeScript 5.9
+- Styling: Tailwind CSS 4.1
+- HTTP Client: Axios
+- State Management: React Context API
+- Data Fetching: TanStack React Query
+- Forms: React Hook Form with Yup validation
+- QR Code: html5-qrcode, QR Scanner
+- Icons: Lucide React
 
-### DevOps & Tools
+### DevOps and Tools
 
-- **Containerization**: Docker (multi-stage builds)
-- **Package Management**: npm, Docker Compose
-- **Code Quality**: ESLint, Prettier
-- **Build Tools**: TypeScript Compiler, tsc-alias
+- Containerization: Docker (multi-stage builds)
+- Package Management: npm, Docker Compose
+- Code Quality: ESLint, Prettier
+- Build Tools: TypeScript Compiler, tsc-alias
 
 ---
 
-## ✨ Features
+## Features
 
 ### User Management
 
@@ -83,21 +83,21 @@ Deployed in production at [mivora.vercel.app](https://mivora.vercel.app)
 
 ### Event Management
 
-- Create and publish events (Draft → Published → Canceled)
-- Event details: title, description, location, date/time, capacity, pricing
-- Poster/media uploads to AWS S3
+- Create and publish events (Draft, Published, Canceled)
+- Event details: title, description, location, date and time, capacity, pricing
+- Poster and media uploads to AWS S3
 - Event search and filtering
 - Event status tracking
 
 ### Ticket System
 
-- Ticket booking with ticket status tracking (Booked → Checked In → Canceled)
+- Ticket booking with status tracking (Booked, Checked In, Canceled)
 - QR code generation for each ticket
 - Automatic ticket cancellation
 - Ticket refund management
 - Real-time ticket counter updates
 
-### Check-in & QR Codes
+### Check-in and QR Codes
 
 - QR code scanning for attendance verification
 - Bulk check-in management with real-time socket updates
@@ -126,85 +126,85 @@ Deployed in production at [mivora.vercel.app](https://mivora.vercel.app)
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Mivora/
-├── Backend/                      # Node.js/Express backend
+├── Backend/                      Node.js/Express backend
 │   ├── src/
-│   │   ├── index.ts             # Application entry point
-│   │   ├── constants/           # Configuration & enums
-│   │   │   ├── config.ts        # Environment variables
-│   │   │   ├── dir.ts           # Directory paths
-│   │   │   ├── enums.ts         # Token types, statuses
-│   │   │   ├── httpStatus.ts    # HTTP status codes
-│   │   │   ├── limits.ts        # Rate limits, file sizes
-│   │   │   └── messages.ts      # API messages
-│   │   ├── controllers/         # Route handlers
+│   │   ├── index.ts             Application entry point
+│   │   ├── constants/           Configuration and enums
+│   │   │   ├── config.ts        Environment variables
+│   │   │   ├── dir.ts           Directory paths
+│   │   │   ├── enums.ts         Token types, statuses
+│   │   │   ├── httpStatus.ts    HTTP status codes
+│   │   │   ├── limits.ts        Rate limits, file sizes
+│   │   │   └── messages.ts      API messages
+│   │   ├── controllers/         Route handlers
 │   │   │   ├── events.controllers.ts
 │   │   │   ├── medias.controllers.ts
 │   │   │   ├── tickets.controllers.ts
 │   │   │   └── users.controllers.ts
-│   │   ├── middlewares/         # Express middlewares
+│   │   ├── middlewares/         Express middlewares
 │   │   │   ├── errors.middlewares.ts
 │   │   │   ├── events.middlewares.ts
 │   │   │   ├── tickets.middlewares.ts
 │   │   │   └── users.middlewares.ts
-│   │   ├── models/              # Request/Response schemas
+│   │   ├── models/              Request/Response schemas
 │   │   │   ├── Errors.ts
 │   │   │   ├── requests/
 │   │   │   └── schemas/
-│   │   ├── routes/              # API route definitions
+│   │   ├── routes/              API route definitions
 │   │   │   ├── events.routes.ts
 │   │   │   ├── medias.routes.ts
 │   │   │   ├── tickets.routes.ts
 │   │   │   └── users.routes.ts
-│   │   ├── services/            # Business logic
+│   │   ├── services/            Business logic
 │   │   │   ├── database.services.ts
 │   │   │   ├── events.services.ts
 │   │   │   ├── medias.services.ts
 │   │   │   ├── qrcode.services.ts
 │   │   │   ├── tickets.services.ts
 │   │   │   └── users.services.ts
-│   │   ├── templates/           # Email templates
+│   │   ├── templates/           Email templates
 │   │   │   └── verify-email.html
-│   │   ├── types/               # TypeScript type definitions
+│   │   ├── types/               TypeScript type definitions
 │   │   │   ├── common.d.ts
-│   │   │   └── domain.ts        # Domain types (UserRole, EventStatus, etc)
-│   │   ├── utils/               # Utility functions
+│   │   │   └── domain.ts        Domain types (UserRole, EventStatus, etc.)
+│   │   ├── utils/                Utility functions
 │   │   │   ├── common.ts
-│   │   │   ├── crypto.ts        # Encryption/decryption
-│   │   │   ├── email.ts         # Email sending via AWS SES
-│   │   │   ├── fake.ts          # Faker data generation
-│   │   │   ├── file.ts          # File operations
-│   │   │   ├── handlers.ts      # Error handlers
-│   │   │   ├── jwt.ts           # JWT management
-│   │   │   ├── s3.ts            # AWS S3 operations
-│   │   │   ├── seed.ts          # Database seeding
-│   │   │   ├── socket.ts        # Socket.io initialization
-│   │   │   ├── uuid.ts          # UUID generation
-│   │   │   └── validation.ts    # Input validation
-│   │   └── uploads/             # Local file storage
+│   │   │   ├── crypto.ts        Encryption/decryption
+│   │   │   ├── email.ts         Email sending via AWS SES
+│   │   │   ├── fake.ts          Faker data generation
+│   │   │   ├── file.ts          File operations
+│   │   │   ├── handlers.ts      Error handlers
+│   │   │   ├── jwt.ts           JWT management
+│   │   │   ├── s3.ts            AWS S3 operations
+│   │   │   ├── seed.ts          Database seeding
+│   │   │   ├── socket.ts        Socket.io initialization
+│   │   │   ├── uuid.ts          UUID generation
+│   │   │   └── validation.ts    Input validation
+│   │   └── uploads/              Local file storage
 │   │       └── images/temp/
-│   ├── docker-compose.yml       # Docker services configuration
-│   ├── Dockerfile               # Multi-stage Docker build
-│   ├── eslint.config.mts        # ESLint configuration
-│   ├── MivoraSwagger.yaml       # API documentation
-│   ├── nodemon.json             # Development watch config
-│   ├── package.json             # Dependencies & scripts
-│   └── tsconfig.json            # TypeScript configuration
+│   ├── docker-compose.yml       Docker services configuration
+│   ├── Dockerfile               Multi-stage Docker build
+│   ├── eslint.config.mts        ESLint configuration
+│   ├── MivoraSwagger.yaml       API documentation
+│   ├── nodemon.json             Development watch config
+│   ├── package.json             Dependencies and scripts
+│   └── tsconfig.json            TypeScript configuration
 │
-├── Frontend/                     # React/Vite frontend
+├── Frontend/                     React/Vite frontend
 │   ├── src/
-│   │   ├── main.tsx            # React entry point
-│   │   ├── App.tsx             # Root component
-│   │   ├── apis/               # API integration
+│   │   ├── main.tsx            React entry point
+│   │   ├── App.tsx             Root component
+│   │   ├── apis/                API integration
 │   │   │   ├── events.api.ts
 │   │   │   ├── index.ts
 │   │   │   ├── tickets.api.ts
 │   │   │   └── users.api.ts
-│   │   ├── assets/             # Static assets
-│   │   ├── components/         # Reusable React components
+│   │   ├── assets/              Static assets
+│   │   ├── components/          Reusable React components
 │   │   │   ├── Badge/
 │   │   │   ├── Button/
 │   │   │   ├── Card/
@@ -218,61 +218,61 @@ Mivora/
 │   │   │   ├── NavHeader/
 │   │   │   ├── PageTransition/
 │   │   │   ├── Popup/
-│   │   │   ├── QRScanner/      # QR code scanning component
+│   │   │   ├── QRScanner/      QR code scanning component
 │   │   │   ├── RegisterHeader/
 │   │   │   ├── SearchButton/
 │   │   │   ├── Select/
 │   │   │   ├── Toggle/
 │   │   │   ├── TokenStyle/
 │   │   │   └── VerifyEmailButton/
-│   │   ├── constants/          # Frontend constants
+│   │   ├── constants/           Frontend constants
 │   │   │   ├── brand.ts
 │   │   │   ├── brandLogo.tsx
 │   │   │   ├── limits.ts
 │   │   │   ├── messages.ts
 │   │   │   └── path.ts
-│   │   ├── contexts/           # React Context providers
+│   │   ├── contexts/            React Context providers
 │   │   │   └── app.context.tsx
-│   │   ├── layouts/            # Layout components
+│   │   ├── layouts/              Layout components
 │   │   │   ├── ChatLayout/
 │   │   │   ├── MainLayout/
 │   │   │   ├── RegisterLayout/
 │   │   │   └── UserLayout/
-│   │   ├── pages/              # Page components
+│   │   ├── pages/                Page components
 │   │   │   ├── About/
 │   │   │   ├── Chat/
 │   │   │   ├── EventDetail/
 │   │   │   ├── Home/
 │   │   │   ├── MyTicketDetails/
 │   │   │   ├── MyTickets/
-│   │   │   ├── Organzier/ (Organizer dashboard)
+│   │   │   ├── Organzier/       Organizer dashboard
 │   │   │   ├── ScanTicket/
 │   │   │   ├── SearchEvents/
 │   │   │   └── Users/
-│   │   ├── routes/             # Route configuration
-│   │   ├── types/              # TypeScript type definitions
-│   │   ├── utils/              # Utility functions
+│   │   ├── routes/               Route configuration
+│   │   ├── types/                TypeScript type definitions
+│   │   ├── utils/                Utility functions
 │   │   ├── App.css
 │   │   └── index.css
-│   ├── public/                 # Static public assets
-│   ├── vercel.json             # Vercel deployment config
-│   ├── eslint.config.js        # ESLint configuration
-│   ├── tailwind.config.js      # Tailwind CSS configuration
-│   ├── tsconfig.json           # TypeScript configuration
-│   └── package.json            # Dependencies & scripts
+│   ├── public/                   Static public assets
+│   ├── vercel.json               Vercel deployment config
+│   ├── eslint.config.js          ESLint configuration
+│   ├── tailwind.config.js        Tailwind CSS configuration
+│   ├── tsconfig.json             TypeScript configuration
+│   └── package.json              Dependencies and scripts
 │
-└── README.md                   # This file
+└── README.md                     This file
 ```
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
-- **Node.js**: v22 or higher
-- **npm**: v11 or higher
-- **PostgreSQL**: v12+ (local or AWS RDS)
-- **Docker**: (optional, for containerized deployment)
-- **AWS Account**: For S3 and SES services
+- Node.js: v22 or higher
+- npm: v11 or higher
+- PostgreSQL: v12 or higher (local or AWS RDS)
+- Docker (optional, for containerized deployment)
+- AWS Account (for S3 and SES services)
 
 ### Environment Variables Required
 
@@ -327,7 +327,7 @@ VITE_SOCKET_URL=http://localhost:4000
 
 ---
 
-## 💻 Installation & Setup
+## Installation and Setup
 
 ### 1. Clone the Repository
 
@@ -352,13 +352,13 @@ npm install
 
 ### 4. Database Setup
 
-Create PostgreSQL database:
+Create the PostgreSQL database:
 
 ```sql
 CREATE DATABASE Mivora;
 ```
 
-Run migrations/seeding (if available):
+Run migrations and seeding (if available):
 
 ```bash
 cd Backend
@@ -367,7 +367,7 @@ npm run seed
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Backend Configuration
 
@@ -375,21 +375,21 @@ All configuration is loaded from environment variables in [src/constants/config.
 
 Key configurations:
 
-- **Port**: Defaults to 4000
-- **CORS Origins**: Configured for localhost and production domains
-- **Database**: PostgreSQL connection string
-- **JWT Tokens**: Multiple token types for different purposes
-- **AWS Services**: S3 for file storage, SES for emails
+- Port: defaults to 4000
+- CORS origins: configured for localhost and production domains
+- Database: PostgreSQL connection string
+- JWT tokens: multiple token types for different purposes
+- AWS services: S3 for file storage, SES for emails
 
 ### Frontend Configuration
 
-- **Vite Dev Server**: Runs on `http://0.0.0.0:5173`
-- **API Endpoints**: Configured via axios instance
-- **Socket.io**: Real-time connection to backend
+- Vite dev server runs on `http://0.0.0.0:5173`
+- API endpoints configured via the axios instance
+- Socket.io connects in real time to the backend
 
 ---
 
-## 🚀 Running the Application
+## Running the Application
 
 ### Development Mode
 
@@ -400,7 +400,7 @@ cd Backend
 npm run dev
 ```
 
-Runs with Nodemon for auto-reload on file changes
+Runs with Nodemon for auto-reload on file changes.
 Server: `http://localhost:4000`
 API Docs: `http://localhost:4000/mivora/api-docs`
 
@@ -411,7 +411,7 @@ cd Frontend
 npm run dev
 ```
 
-Runs with Vite dev server
+Runs with the Vite dev server.
 App: `http://localhost:5173`
 
 ### Production Build
@@ -431,11 +431,11 @@ cd Frontend
 npm run build
 ```
 
-Builds optimized production bundle in `dist/`
+Builds an optimized production bundle in `dist/`.
 
 ---
 
-## 📚 API Documentation
+## API Documentation
 
 ### Interactive API Documentation
 
@@ -445,79 +445,74 @@ Access Swagger UI at: `http://localhost:4000/mivora/api-docs`
 
 #### Users (`/api/v1/users`)
 
-- `POST /register` - User registration
-- `POST /login` - User login
-- `POST /logout` - User logout
-- `POST /refresh` - Refresh access token
-- `POST /verify-email` - Verify email with token
-- `POST /forgot-password` - Request password reset
-- `POST /reset-password` - Reset password with token
-- `GET /me` - Get current user profile
-- `GET /:id` - Get user by ID
-- `PATCH /:id` - Update user profile
+- `POST /register`: user registration
+- `POST /login`: user login
+- `POST /logout`: user logout
+- `POST /refresh`: refresh access token
+- `POST /verify-email`: verify email with token
+- `POST /forgot-password`: request password reset
+- `POST /reset-password`: reset password with token
+- `GET /me`: get current user profile
+- `GET /:id`: get user by ID
+- `PATCH /:id`: update user profile
 
 #### Events (`/api/v1/events`)
 
-- `GET /` - List all published events
-- `POST /` - Create event (organizer only)
-- `GET /:id` - Get event details
-- `PUT /:id` - Update event details (organizer only)
-- `DELETE /:id` - Delete event (organizer only)
-- `PATCH /:id/status` - Update event status
-- `GET /:id/attendees` - Get event attendees list
+- `GET /`: list all published events
+- `POST /`: create event (organizer only)
+- `GET /:id`: get event details
+- `PUT /:id`: update event details (organizer only)
+- `DELETE /:id`: delete event (organizer only)
+- `PATCH /:id/status`: update event status
+- `GET /:id/attendees`: get event attendees list
 
 #### Tickets (`/api/v1/tickets`)
 
-- `POST /` - Book a ticket
-- `GET /` - Get user's tickets
-- `GET /:id` - Get ticket details
-- `PATCH /:id/check-in` - Check in attendee via QR code
-- `DELETE /:id` - Cancel ticket
+- `POST /`: book a ticket
+- `GET /`: get user's tickets
+- `GET /:id`: get ticket details
+- `PATCH /:id/check-in`: check in attendee via QR code
+- `DELETE /:id`: cancel ticket
 
 #### Media (`/api/v1/medias`)
 
-- `POST /` - Upload media file to S3
-- `GET /:id` - Get media info
-- `DELETE /:id` - Delete media file
+- `POST /`: upload media file to S3
+- `GET /:id`: get media info
+- `DELETE /:id`: delete media file
 
 ---
 
-## 🗄️ Database Schema
+## Database Schema
 
 ### Core Tables
 
-**users**
-
+users
 - User authentication and profile information
 - Roles: attendee, organizer
 - Verification status tracking
 
-**events**
-
+events
 - Event details created by organizers
 - Status: draft, published, canceled
 - Capacity and pricing information
 - Poster URL for event image
 
-**tickets**
-
+tickets
 - Ticket bookings with attendee and event references
 - Status: booked, checked_in, canceled
 - QR code token for scanning
 
-**messages**
-
+messages
 - Real-time chat messages between users
 - Associated with events
 - Timestamp tracking
 
-**users_followers** (implied from project structure)
-
+users_followers (implied from project structure)
 - Following relationships between users
 
 ---
 
-## 🐳 Deployment
+## Deployment
 
 ### Docker Deployment
 
@@ -530,7 +525,7 @@ docker-compose up --build
 This starts:
 
 - Backend service on port 4000
-- Mounts uploads volume for persistence
+- Mounted uploads volume for persistence
 
 #### Push to Docker Registry
 
@@ -541,10 +536,10 @@ docker push your-registry/mivora-backend:latest
 
 #### Deploy to AWS EC2
 
-1. Build push image to registry (ECR/Docker Hub)
-2. SSH into EC2 instance
-3. Update `docker-compose.yml` with image reference
-4. Run: `docker-compose up -d`
+1. Build and push the image to a registry (ECR or Docker Hub).
+2. SSH into the EC2 instance.
+3. Update `docker-compose.yml` with the image reference.
+4. Run `docker-compose up -d`.
 
 ### Frontend Deployment
 
@@ -567,7 +562,7 @@ VITE_SOCKET_URL=https://api.yourdomain.com
 
 ---
 
-## 👨‍💻 Development
+## Development
 
 ### Code Quality
 
@@ -613,23 +608,23 @@ npm run seed
 
 ---
 
-## 🏗️ Project Notes
+## Project Notes
 
 ### Key Technologies
 
-- **Real-time**: Socket.io for live chat and event updates
-- **File Storage**: AWS S3 for scalable image storage
-- **Email**: AWS SES for transactional emails
-- **Authentication**: Multi-token JWT strategy for security
-- **QR Codes**: Dynamic QR code generation for ticket verification
+- Real-time: Socket.io for live chat and event updates
+- File storage: AWS S3 for scalable image storage
+- Email: AWS SES for transactional emails
+- Authentication: multi-token JWT strategy for security
+- QR codes: dynamic QR code generation for ticket verification
 
 ### Architecture Highlights
 
-- **Separation of Concerns**: Controllers, Services, Middlewares clearly separated
-- **Type Safety**: Full TypeScript throughout the codebase
-- **API Documentation**: Swagger/OpenAPI specification
-- **Error Handling**: Centralized error middleware with categorized HTTP status codes
-- **Validation**: Request validation at middleware level
+- Separation of concerns: controllers, services, and middlewares are clearly separated
+- Type safety: full TypeScript throughout the codebase
+- API documentation: Swagger/OpenAPI specification
+- Error handling: centralized error middleware with categorized HTTP status codes
+- Validation: request validation at the middleware level
 
 ### Best Practices Followed
 
@@ -643,16 +638,16 @@ npm run seed
 
 ---
 
-## 📞 Support & Contribution
+## Support and Contribution
 
 For issues, questions, or contributions, please refer to the project repository.
 
 ---
 
-## 📄 License
+## License
 
 ISC
 
 ---
 
-**Last Updated**: March 2026
+Last Updated: March 2026
