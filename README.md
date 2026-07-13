@@ -2,7 +2,7 @@
 
 A full-stack event management and ticketing platform built with TypeScript, Node.js, Express, React, and PostgreSQL. Features real-time chat, QR code scanning, and comprehensive event organization tools.
 
-![Mivora High-Level Architecture](images/mivora-high-level-architecture.jpg)
+![Mivora High-Level Architecture](images/mivora-high-level-architecture.pdf)
 
 ---
 
